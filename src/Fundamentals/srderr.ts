@@ -26,3 +26,12 @@ logger.warn('I love you');
 
 // console.error();
 // console.warn();
+
+(function one() {
+  (function two() {
+    (function three() {
+      // without error and without crash
+      console.trace('test-trace');
+    })();
+  })();
+})();
