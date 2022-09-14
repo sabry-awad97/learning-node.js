@@ -33,3 +33,15 @@ watch(
     }
   }
 );
+
+const watcher = watch(__filename);
+
+watcher.on('change', (event, filename) => {
+  if (event === 'rename') {
+    console.log('The file was renamed/deleted.');
+  } else if (event === 'change') {
+    const time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    console.log(`${filename} updated ${time}`);
+  }
+  watcher.close();
+});
