@@ -1,0 +1,13 @@
+{
+  "name": "learning-node",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "ts-node --transpile-only src/index.ts"
+  },
+  "dependencies": {
+    "@types/node": "^18.7.18"
+  }
+}
