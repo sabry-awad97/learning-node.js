@@ -5,6 +5,10 @@ let counter = 1;
 // Instantiate an EventEmitter object - used to generate new events -
 const emitter = new EventEmitter();
 
+emitter.on('newListener', function (eventName, listener) {
+  console.log('Added listener for ' + eventName + ' event');
+});
+
 // 1- attach an event handler (listener) to an event
 // return the EventEmitter instance to allow chaining
 emitter.on('connection', data => {
@@ -14,6 +18,7 @@ emitter.on('connection', data => {
   // if this throws error => this is not called
 });
 
+// new event handler is registered
 emitter.on('connection', data => {
   // used to trap the event and process it
 
