@@ -11,6 +11,13 @@ emitter.on('connection', data => {
   // used to trap the event and process it
 
   console.log('connection lisetner is executed ' + data);
+  // if this throws error => this is not called
+});
+
+emitter.on('connection', data => {
+  // used to trap the event and process it
+
+  console.log('connection lisetner is executed again ' + data);
 });
 
 // emitter.addListener("connection", data => {
@@ -24,3 +31,11 @@ emitter.emit('connection', counter++);
 emitter.emit('connection', counter++);
 
 // emitter.emit("error", new Error("Mistake"))
+
+const listenerArray = emitter.listeners('eventName');
+// listenerArray.forEach(handler => handler());
+
+const listenerCount = emitter.listenerCount('eventName');
+
+console.log(listenerArray.length);
+console.log(listenerCount);
