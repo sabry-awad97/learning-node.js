@@ -9,14 +9,15 @@ emitter.on('newListener', function (eventName, listener) {
   console.log('Added listener for ' + eventName + ' event');
 });
 
+// named callback (not errback)
+// it will be used in at least two places
+const handler = (data: number) => {
+  console.log('connection listner is executed ' + data);
+};
+
 // 1- attach an event handler (listener) to an event
 // return the EventEmitter instance to allow chaining
-emitter.on('connection', data => {
-  // used to trap the event and process it
-
-  console.log('connection lisetner is executed ' + data);
-  // if this throws error => this is not called
-});
+emitter.on('connection', handler);
 
 // new event handler is registered
 emitter.on('connection', data => {
@@ -44,3 +45,7 @@ const listenerCount = emitter.listenerCount('eventName');
 
 console.log(listenerArray.length);
 console.log(listenerCount);
+
+// return the EventEmitter instance to allow chaining
+emitter.removeListener('connection', handler);
+// emitter.removeAllListeners("connection");
